@@ -3,6 +3,7 @@ package Game;
 import java.util.Scanner;
 
 public class HandleInputs {
+
     public char getCharInput (Scanner scanner) {
         char input;
         while (true) {

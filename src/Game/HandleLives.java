@@ -1,6 +1,7 @@
 package Game;
 
 public class HandleLives {
+
     private int lives;
 
     public  HandleLives(int lives){
