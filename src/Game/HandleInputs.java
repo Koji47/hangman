@@ -7,6 +7,7 @@ public class HandleInputs {
         char input;
         while (true) {
             System.out.println("Enter a letter: ");
+            System.out.println(" ");
             String userInput = scanner.nextLine();
             if(userInput.length() == 1 && Character.isLetter(userInput.charAt(0))) {
                 input = userInput.charAt(0);
