@@ -14,4 +14,17 @@ public class HandleInstructions {
         System.out.println("If you guess incorrectly, you will lose a life, good luck (╭ರ_•́)");
         System.out.println("\n");
     }
+
+    public void printWin(){
+        System.out.println("\n");
+        System.out.println("  ________________");
+        System.out.println("  |           |");
+        System.out.println("  |");
+        System.out.println("  |");
+        System.out.println("  |           ^ ");
+        System.out.println("  |        ( ಠ_ಠ)  Thank You for saving me <3");
+        System.out.println("  |         (づ )づ");
+        System.out.println("__|______    / |");
+        System.out.println(" ");
+    }
 }

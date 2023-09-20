@@ -8,9 +8,9 @@ import static Game.HandleWords.*;
 import static Game.HangMan.drawHangMan;
 
 public class HandleGame {
-    static HandleLives handleLives = new HandleLives(6);
-    public static String chosenWord = getRandomSport().toLowerCase();
-    public static List<Character> guessedCharacters = new ArrayList<>();
+    private static final HandleLives handleLives = new HandleLives(6);
+    private static String chosenWord = getRandomSport().toLowerCase();
+    private static List<Character> guessedCharacters = new ArrayList<>();
 
 
     public static void startGame() {
@@ -23,6 +23,7 @@ public class HandleGame {
         while (handleLives.getLives() != 0) {
             System.out.println("Word: " + displayWordWithGuesses());
             char guess = handleInputs.getCharInput(scanner);
+            guess = Character.toLowerCase(guess);
             if (guessedCharacters.contains(guess)) {
                 System.out.println("You've already guessed this letter, try another.");
                 System.out.println("\n");
@@ -34,6 +35,7 @@ public class HandleGame {
                 guessedCharacters.add(guess);
                 if (checkIfWon()) {
                     System.out.println("Congratulations ~(‾▿‾)~, you've won! The word was: " + chosenWord);
+                    handleInstructions.printWin();
                     System.out.println("\n");
                     break;
                 }
@@ -42,6 +44,7 @@ public class HandleGame {
                 handleLives.loseLives();
                 System.out.println("Lives remaining: " + handleLives.getLives());
                 drawHangMan(handleLives.getLives());
+                guessedCharacters.add(guess);
                 if (handleLives.getLives() == 0) {
                     System.out.println("Game over (╯°□°）╯︵ ┻━┻. The word was: " + chosenWord);
                 }
@@ -50,7 +53,7 @@ public class HandleGame {
         }
     }
 
-    public static boolean checkIfWon() {
+    private static boolean checkIfWon() {
         for (char c : chosenWord.toCharArray()
         ) {
             if (!guessedCharacters.contains(c)) {
@@ -60,7 +63,7 @@ public class HandleGame {
         return true;
     }
 
-    public static String displayWordWithGuesses() {
+    private static String displayWordWithGuesses() {
         String display = "";
         for (char c : chosenWord.toCharArray()
         ) {
